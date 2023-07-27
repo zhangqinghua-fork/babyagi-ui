@@ -47,10 +47,11 @@ async function getEmbedding(
   }
 
   if (openAIApiKey) {
+    // 001: 修改openai代理地址
     const embedding = new OpenAIEmbeddings({
       modelName,
       openAIApiKey: getUserApiKey(),
-    });
+    }, {basePath: 'https://openai.api2d.net/v1'});
     return await embedding.embedQuery(text);
   } else {
     const response = await axios.post(

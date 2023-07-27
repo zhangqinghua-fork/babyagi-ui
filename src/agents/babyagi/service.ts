@@ -27,6 +27,7 @@ export const executionAgent = async (
   modelName: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 30');
   const model = new OpenAI({
     openAIApiKey,
     modelName,
@@ -51,6 +52,7 @@ export const taskCreationAgent = async (
   language: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 55');
   const model = new OpenAI({ openAIApiKey, modelName, temperature: 0.5 });
   const chain = TaskCreationChain.fromLLM({ llm: model });
   const response = await chain._call({
@@ -74,6 +76,7 @@ export const prioritizationAgent = async (
   modelName: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 79');
   const model = new OpenAI({ openAIApiKey, modelName, temperature: 0.5 });
   const chain = TaskPrioritizationChain.fromLLM({ llm: model });
   const response = await chain._call({
@@ -105,6 +108,7 @@ export const contextAgent = async (
 ) => {
   let qe = queryEmbedding;
   if (!qe) {
+    console.log('babyagi 111');
     const embedding = new OpenAIEmbeddings();
     qe = await embedding.embedQuery(query);
   }
@@ -147,6 +151,7 @@ export const enrichResult = async (
 ) => {
   let values = vectorValues;
   if (!values) {
+    console.log('babyagi 154');
     const embedding = new OpenAIEmbeddings();
     values = (await embedding.embedDocuments([result]))[0] ?? [];
   }

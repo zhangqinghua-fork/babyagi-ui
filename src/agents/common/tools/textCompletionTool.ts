@@ -12,6 +12,8 @@ export const textCompletionTool = async (
   id?: number,
   messageCallnback?: (message: Message) => void,
 ) => {
+  console.log('textCompletionTool');
+
   if (prompt.length > 3200) {
     modelName = 'gpt-3.5-turbo-16k-0613';
   }
@@ -66,7 +68,7 @@ export const textCompletionTool = async (
         },
       ],
     },
-    { baseOptions: { signal: signal } },
+    { baseOptions: { signal: signal }, basePath: 'https://openai.api2d.net/v1'},
   );
 
   try {

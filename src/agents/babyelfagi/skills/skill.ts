@@ -99,6 +99,7 @@ export class Skill {
   ): Promise<string> {
     if (getUserApiKey()) {
       let chunk = '';
+      console.log('taskRegistry 102 generateText');
       const messageCallback = ignoreCallback ? () => {} : this.messageCallback;
       const llm = new ChatOpenAI(
         {
@@ -121,7 +122,7 @@ export class Skill {
             },
           ],
         },
-        { baseOptions: { signal: this.abortController.signal } },
+        { baseOptions: { signal: this.abortController.signal }, basePath: 'https://openai.api2d.net/v1' },
       );
 
       try {

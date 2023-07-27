@@ -19,7 +19,10 @@ export class YoutubeSearch extends Skill {
         Objective: ${objective}
       `;
     const query = await this.generateText(prompt, task);
+    console.log('==================search query: ', query);
     const searchResults = await this.webSearchTool(`site:youtube.com ${query}`);
+    console.log('==================searchResults: ', searchResults);
+    
     const youtubeLinks = this.extractYoutubeLinks(searchResults);
 
     return '```json\n' + JSON.stringify(youtubeLinks, null, 2) + '\n```';

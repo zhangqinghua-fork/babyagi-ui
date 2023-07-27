@@ -8,6 +8,7 @@ export const runtime = 'edge';
 const handler = async (req: NextRequest) => {
   try {
     const { objective, task, notes, chunk, model_name } = await req.json();
+    console.log('extracts 11');
     const llm = new ChatOpenAI({
       modelName: model_name,
       temperature: 0,

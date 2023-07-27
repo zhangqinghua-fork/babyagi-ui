@@ -34,6 +34,7 @@ export const taskCreationAgent = async (
   let result = '';
   if (getUserApiKey()) {
     // client side request
+    console.log('======================client side request');
     const model = new OpenAIChat(
       {
         openAIApiKey,
@@ -61,7 +62,7 @@ export const taskCreationAgent = async (
           },
         ],
       },
-      { baseOptions: { signal: signal } },
+      { baseOptions: { signal: signal }, basePath: 'https://openai.api2d.net/v1' },
     );
 
     const chain = new LLMChain({ llm: model, prompt });

@@ -15,7 +15,7 @@ export const webScrape = async (url: string) => {
 
 const fetchUrlContent = async (url: string) => {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {timeout: 10000});
     return response.data;
   } catch (error) {
     console.error(`Error while fetching the URL: ${error}`);

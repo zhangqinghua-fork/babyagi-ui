@@ -5,6 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { prompt, model_name } = await req.body;
+    // 004: 修改openai代理地址
     const llm = new ChatOpenAI({
       modelName: model_name,
       temperature: 0.2,
@@ -12,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       topP: 1,
       frequencyPenalty: 0,
       presencePenalty: 0,
-    });
+    }, {basePath: 'https://openai.api2d.net/v1'});
 
     const response = await llm.call([new HumanChatMessage(prompt)]);
 

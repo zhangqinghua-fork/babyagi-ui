@@ -1,38 +1,35 @@
-import Airtable from 'airtable';
-import { Skill, SkillType } from '../skill';
+```typescript
 import { AgentTask } from '@/types';
+import { Skill, SkillType } from '../skill';
+import Airtable from 'airtable';
 
 export class AirtableSaver extends Skill {
   name = 'airtable_saver';
-  descriptionForHuman = 'Saves data to Airtable';
+  descriptionForHuman =
+    'A skill that saves data into a specified Airtable table using the Airtable API.';
   descriptionForModel =
-    'Saves data to Airtable. If objective does not include airtable, this skill dont use anytime.';
-  icon = '📦';
+    'A skill that saves data into a specified Airtable table using the Airtable API. If objective does not include save the data, this skill dont use anytime.';
+  icon = '📤';
   type: SkillType = 'dev';
-
   apiKeysRequired = ['airtable'];
-
-  baseId = 'appXXXXXXX'; // Your base ID here
-  tableName = 'Table 1'; // Your table name here
 
   async execute(
     task: AgentTask,
     dependentTaskOutputs: any,
     objective: string,
   ): Promise<string> {
-    if (!this.valid) {
-      return '';
-    }
+    if (!this.valid) return '';
 
-    const airtable = new Airtable({ apiKey: this.apiKeys['airtable'] });
-    const base = airtable.base(this.baseId);
-    const fields = { Notes: dependentTaskOutputs }; // Your fields here
+    const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
+    const table = base(process.env.AIRTABLE_TABLE_NAME);
 
     try {
-      await base(this.tableName).create([{ fields }]);
-      return 'Record creation successful';
-    } catch (error: any) {
-      return `Record creation failed: ${error.message}`;
+      await table.create(dependentTaskOutputs);
+      return `Data saved successfully to Airtable table: ${process.env.AIRTABLE_TABLE_NAME}`;
+    } catch (error) {
+      console.error('Error saving data to Airtable.', error);
+      return 'Error saving data to Airtable.';
     }
   }
 }
+```

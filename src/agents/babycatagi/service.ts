@@ -11,6 +11,7 @@ export const taskCreationAgent = async (
   openAIApiKey?: string,
   callback?: (token: string) => void,
 ) => {
+  console.log('======================taskCreationAgent');
   const model = new OpenAIChat(
     {
       openAIApiKey,
@@ -58,6 +59,7 @@ export const extractRelevantInfoAgent = async (
   chunk: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 62');
   const model = new OpenAI({
     openAIApiKey,
     modelName: 'gpt-3.5-turbo-0613',

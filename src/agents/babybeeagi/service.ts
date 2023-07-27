@@ -10,6 +10,7 @@ export const summarizerAgent = async (
   language: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 13');
   const model = new OpenAI({
     openAIApiKey,
     modelName: 'gpt-3.5-turbo-0613',
@@ -34,6 +35,7 @@ export const overviewAgent = async (
   completedTasksText: string,
   openAIApiKey?: string,
 ) => {
+  console.log('babyagi 38');
   const model = new OpenAI({
     openAIApiKey,
     modelName: 'gpt-3.5-turbo-0613',
@@ -62,6 +64,7 @@ export const taskManagementAgent = async (
   language: string,
   openAIApiKey?: string,
 ) => {
+  console.log('======================taskManagementAgent');
   const model = new OpenAIChat({
     openAIApiKey,
     modelName,

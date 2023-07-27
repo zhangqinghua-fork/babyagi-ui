@@ -56,6 +56,8 @@ export class TaskRegistry {
     let result = '';
     if (openAIApiKey) {
       let chunk = '```json\n';
+      console.log('taskRegistry 59 createTaskList');
+      
       const model = new ChatOpenAI(
         {
           openAIApiKey,
@@ -81,7 +83,7 @@ export class TaskRegistry {
             },
           ],
         },
-        { baseOptions: { signal: abortController?.signal } },
+        { baseOptions: { signal: abortController?.signal }, basePath: 'https://openai.api2d.net/v1' },
       );
 
       try {
@@ -249,6 +251,7 @@ export class TaskRegistry {
       '\nReflecting on task output to generate new tasks if necessary...\n',
     );
 
+    console.log('taskRegistry 254');
     const model = new ChatOpenAI({
       openAIApiKey: getUserApiKey(),
       modelName,

@@ -4,9 +4,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { model_name, text } = await req.body;
+    // 002: 修改openai代理地址
     const embedding = new OpenAIEmbeddings({
       modelName: model_name,
-    });
+    }, {basePath: 'http://www.baidu.com'});
 
     const response = await embedding.embedQuery(text);
 

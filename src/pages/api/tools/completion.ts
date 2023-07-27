@@ -5,6 +5,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { prompt, model_name } = await req.body;
 
+    console.log('-====================textCompletion=========================');
+    
     const response = await textCompletion(prompt, model_name);
     return res.status(200).json({ response: response });
   } catch (error) {

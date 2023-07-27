@@ -9,7 +9,7 @@ const handler = async (req: NextRequest) => {
   try {
     const { objective, websearch_var, user_input_var, model_name, language } =
       await req.json();
-
+    console.log('taskRegistry 12');
     const llm = new ChatOpenAI({
       modelName: model_name,
       temperature: 0,

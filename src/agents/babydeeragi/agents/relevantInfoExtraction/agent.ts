@@ -48,6 +48,7 @@ export const relevantInfoExtractionAgent = async (
   }
 
   const prompt = relevantInfoExtractionPrompt();
+  console.log('======================relevantInfoExtractionPrompt');
   const llm = new OpenAIChat(
     {
       openAIApiKey,
@@ -57,7 +58,7 @@ export const relevantInfoExtractionAgent = async (
       topP: 1,
       stop: ['###'],
     },
-    { baseOptions: { signal: signal } },
+    { baseOptions: { signal: signal }, basePath: 'https://openai.api2d.net/v1' },
   );
   const chain = new LLMChain({ llm: llm, prompt });
   try {

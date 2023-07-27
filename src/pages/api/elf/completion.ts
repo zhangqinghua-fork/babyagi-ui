@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       frequency_penalty,
       presence_penalty,
     } = await req.body;
+    // 003: 修改openai代理地址
     const llm = new ChatOpenAI({
       modelName: model_name,
       temperature,
@@ -21,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       frequencyPenalty: frequency_penalty || 0,
       presencePenalty: presence_penalty || 0,
       verbose: true,
-    });
+    }, {basePath: 'https://openai.api2d.net/v1'});
 
     const response = await llm.call([new HumanChatMessage(prompt)]);
 

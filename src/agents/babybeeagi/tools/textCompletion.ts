@@ -5,6 +5,8 @@ export const textCompletion = async (
   modelName: string,
   openAIApiKey?: string,
 ) => {
+  console.log('======================textCompletion');
+  
   const tool = new OpenAIChat({
     openAIApiKey: openAIApiKey,
     modelName: modelName,

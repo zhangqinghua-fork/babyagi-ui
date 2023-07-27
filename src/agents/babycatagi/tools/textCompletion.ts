@@ -7,6 +7,7 @@ export const textCompletion = async (
   openAIApiKey?: string,
   callback?: (token: string) => void,
 ) => {
+  console.log('babyagi 10');
   const tool = new OpenAI(
     {
       openAIApiKey: openAIApiKey,
