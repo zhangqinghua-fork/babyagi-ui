@@ -6,6 +6,9 @@ export const Executions: FC = () => {
   const { executions } = useExecution();
   const exe = executions.slice().reverse();
 
+  /**
+   * 执行记录
+   */
   return (
     <div className="flex w-full flex-grow flex-col gap-1 overflow-auto pt-2">
       <ul className="flex flex-col gap-1">

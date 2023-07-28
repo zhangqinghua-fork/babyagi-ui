@@ -21,3 +21,6 @@ taskRegistry.createTaskList
 skill.generateText
 
 new OpenAIChat
+
+### 主页的入口文件在哪里
+/src/pages/index.tsx

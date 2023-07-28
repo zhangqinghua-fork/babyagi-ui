@@ -1,4 +1,3 @@
-```typescript
 import { AgentTask } from '@/types';
 import { Skill, SkillType } from '../skill';
 import Airtable from 'airtable';
@@ -32,4 +31,3 @@ export class AirtableSaver extends Skill {
     }
   }
 }
-```

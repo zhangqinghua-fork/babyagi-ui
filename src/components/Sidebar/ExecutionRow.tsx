@@ -25,6 +25,9 @@ export const ExecutionRow: FC<ExecutionRowProps> = ({ execution }) => {
 
   const agent = AGENT.find((agent) => agent.id === execution.params.agent);
 
+  /**
+   * 代理图片/任务名称/删除按钮
+   */
   return (
     <button
       className={`flex w-full items-center gap-3 rounded-lg p-3 text-sm transition-colors duration-200 hover:bg-neutral-500/20 disabled:opacity-50 disabled:hover:bg-inherit

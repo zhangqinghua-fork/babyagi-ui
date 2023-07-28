@@ -33,16 +33,28 @@ function Home() {
     saveSidebarState(show);
   }, []);
 
+  /**
+   * 保存侧边栏状态
+   */
   const saveSidebarState = (show: boolean) => {
     const state: UIState = { showSidebar: show };
     localStorage.setItem(STATE_KEY, JSON.stringify(state));
   };
 
+  /**
+   * 处理隐藏侧边栏事件
+   */
   const menuClickHandler = () => {
+    // 1. 显示/隐藏侧边栏
     setShowSidebar(!showSidebar);
+    // 2. 保存侧边栏状态
     saveSidebarState(!showSidebar);
   };
 
+  /**
+   * 1. 侧边栏
+   * 2. 代理
+   */
   return (
     <>
       <Head>
@@ -94,8 +106,13 @@ function Home() {
   );
 }
 
+/**
+ * 不知道是在哪里调用的
+ */
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
+  // 1. 获取支持的语言列表
   const supportedLocales = languages.map((language) => language.code);
+  // 2. 选择使用的语言环境
   const chosenLocale = supportedLocales.includes(locale) ? locale : 'en';
 
   return {
